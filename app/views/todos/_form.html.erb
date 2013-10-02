@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :todo_list %><br>
-    <%= f.text_field :todo_list %>
+    <%= f.collection_select :todo_list_id, TodoList.all, :id, :name %><br>
   </div>
   <div class="actions">
     <%= f.submit %>

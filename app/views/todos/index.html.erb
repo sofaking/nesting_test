@@ -4,8 +4,8 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
       <th>Todo list</th>
+      <th>Todo</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,8 +15,8 @@
   <tbody>
     <% @todos.each do |todo| %>
       <tr>
+        <td><%= todo.todo_list.name %></td>
         <td><%= todo.name %></td>
-        <td><%= todo.todo_list %></td>
         <td><%= link_to 'Show', todo %></td>
         <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
         <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

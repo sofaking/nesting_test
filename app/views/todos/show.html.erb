@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Todo name:</strong>
   <%= @todo.name %>
 </p>
 
 <p>
   <strong>Todo list:</strong>
-  <%= @todo.todo_list %>
+  <%= @todo.todo_list.name %>
 </p>
 
 <%= link_to 'Edit', edit_todo_path(@todo) %> |
