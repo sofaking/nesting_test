@@ -1,4 +1,8 @@
 NestingTest::Application.routes.draw do
+  resources :todos
+
+  resources :todo_lists
+
   resources :projects
 
   # The priority is based upon order of creation: first created -> highest priority.
