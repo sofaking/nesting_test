@@ -1,13 +1,12 @@
 NestingTest::Application.routes.draw do
   root 'home#index', as: 'home'
-  #get 'home/index'
   
-  resources :projects, shallow: true do
-    resources :todo_lists
-  end
-
-  resources :todo_lists, only: [:show, :edit, :update, :destroy] do
-    resources :todos, shallow: true
+  shallow do
+    resources :projects do
+      resources :todo_lists do
+	resources :todos
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
