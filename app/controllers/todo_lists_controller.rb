@@ -1,10 +1,11 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:index, :new, :show]
 
   # GET /todo_lists
   # GET /todo_lists.json
   def index
-    @todo_lists = TodoList.all
+    @todo_lists = TodoList.where(project: @project)
   end
 
   # GET /todo_lists/1
@@ -65,6 +66,11 @@ class TodoListsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_list
       @todo_list = TodoList.find(params[:id])
+    end
+
+    def set_project
+      project_id = params[:project_id] || @todo_list.project
+      @project = Project.find(project_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

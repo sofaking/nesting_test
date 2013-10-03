@@ -1,4 +1,4 @@
-<%= link_to 'Up', project_path(@todo_list.project) %><br />
+<%= link_to 'Up', project_todo_lists_path(@project) %><br />
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -12,11 +12,8 @@
 </p>
 
 <p>
-  <strong>Todos:</strong><br />
-  <% @todo_list.todo.each do |todo| %>
-    <%= link_to todo.name, todo_path(todo) %><br />
-  <% end %>
+  <%= link_to 'Todos', todo_list_todos_path(@todo_list) %>
 </p>
 
 <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
+<%= link_to 'Back', project_todo_lists_path(@project) %>

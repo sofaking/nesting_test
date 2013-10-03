@@ -1,10 +1,11 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list, only: [:index, :new, :edit, :destroy]
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    @todos = Todo.where(todo_list: @todo_list)
   end
 
   # GET /todos/1
@@ -56,7 +57,7 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     respond_to do |format|
-      format.html { redirect_to todos_url }
+      format.html { redirect_to project_todos_url(@project) }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,11 @@ class TodosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
       @todo = Todo.find(params[:id])
+    end
+
+    def set_todo_list
+      todo_list_id = params[:todo_list_id] || @todo.todo_list
+      @todo_list = TodoList.find(todo_list_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
